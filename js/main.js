@@ -239,14 +239,14 @@
           const targetEl = document.querySelector(targetId);
           if (targetEl) {
             playCyberAudio('click');
-            const offsetTop = targetEl.offsetTop - 80;
+            const offsetTop = targetEl.offsetTop - 75;
             window.scrollTo({ top: offsetTop, behavior: 'smooth' });
 
             // Close mobile menu if open
-            const navLinksContainer = document.querySelector('.nav-links');
-            if (navLinksContainer && navLinksContainer.classList.contains('mobile-open')) {
-              navLinksContainer.classList.remove('mobile-open');
-            }
+            const navMenu = document.getElementById('nav-menu');
+            const hamburger = document.getElementById('mobile-menu-btn');
+            if (navMenu) navMenu.classList.remove('nav-open');
+            if (hamburger) hamburger.classList.remove('open');
           }
         }
       });
@@ -257,29 +257,32 @@
   // 5. Mobile Hamburger Drawer
   // ==========================================
   function setupMobileMenu() {
-    const header = document.querySelector('header .nav-inner');
-    if (!header) return;
+    const hamburger = document.getElementById('mobile-menu-btn');
+    const navMenu = document.getElementById('nav-menu');
+    if (!hamburger || !navMenu) return;
 
-    let hamburger = document.getElementById('mobile-menu-btn');
-    if (!hamburger) {
-      hamburger = document.createElement('button');
-      hamburger.id = 'mobile-menu-btn';
-      hamburger.className = 'mobile-menu-btn';
-      hamburger.setAttribute('aria-label', 'Toggle navigation menu');
-      hamburger.innerHTML = '<span></span><span></span><span></span>';
-      
-      const brand = document.querySelector('.brand');
-      if (brand) brand.after(hamburger);
-    }
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      playCyberAudio('click');
+      const isOpen = navMenu.classList.toggle('nav-open');
+      hamburger.classList.toggle('open', isOpen);
+    });
 
-    const navLinks = document.querySelector('.nav-links');
-    if (hamburger && navLinks) {
-      hamburger.addEventListener('click', () => {
-        playCyberAudio('click');
-        hamburger.classList.toggle('open');
-        navLinks.classList.toggle('mobile-open');
-      });
-    }
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (navMenu.classList.contains('nav-open') && !navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+        navMenu.classList.remove('nav-open');
+        hamburger.classList.remove('open');
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMenu.classList.contains('nav-open')) {
+        navMenu.classList.remove('nav-open');
+        hamburger.classList.remove('open');
+      }
+    });
   }
 
   // ==========================================

@@ -53,59 +53,46 @@
 
     /* Top Navigation Banner */
     header {
-      padding: 30px 0 20px 0;
+      padding: 12px 0;
       border-bottom: 1px solid var(--card-border);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(7, 11, 20, 0.85);
+      background: rgba(7, 11, 20, 0.92);
+      transition: padding 0.3s ease;
     }
 
     .nav-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 16px;
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       font-family: 'Outfit', sans-serif;
       font-weight: 800;
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       letter-spacing: -0.5px;
       color: #fff;
+      text-decoration: none;
+      flex-shrink: 0;
     }
 
     .brand-badge {
       background: linear-gradient(135deg, #06b6d4, #3b82f6);
-      padding: 4px 10px;
-      border-radius: 8px;
-      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
       box-shadow: var(--glow-cyan);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-cyan);
     }
 
     /* Hero Section */
@@ -682,44 +669,6 @@
         padding: 0 16px;
       }
 
-      header {
-        padding: 12px 0 10px 0;
-      }
-
-      .nav-inner {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-      }
-
-      .brand {
-        font-size: 1.15rem;
-        justify-content: space-between;
-      }
-
-      .nav-links {
-        display: flex;
-        overflow-x: auto;
-        white-space: nowrap;
-        gap: 8px;
-        padding-bottom: 6px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-
-      .nav-links::-webkit-scrollbar {
-        display: none;
-      }
-
-      .nav-links li a {
-        padding: 6px 12px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 9999px;
-        font-size: 0.78rem;
-        display: inline-block;
-      }
-
       .hero {
         padding: 30px 0 20px 0;
       }
@@ -870,25 +819,36 @@
   <canvas id="cyber-canvas"></canvas>
 
   <!-- Sticky Header -->
-  <header>
+  <header id="site-header">
     <div class="container nav-inner">
-      <div class="brand">
+      <a href="#" class="brand">
         <span>🛡️</span>
-        <span>AI NIDS CORE</span>
+        <span class="brand-title">AI NIDS CORE</span>
         <span class="brand-badge">v2.0 Active</span>
-      </div>
-      <ul class="nav-links">
-        <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#features">8 Features</a></li>
-        <li><a href="#live-stream" style="color:var(--accent-cyan); font-weight:600;">🔴 Live SOC Stream</a></li>
-        <li><a href="#simulator">Live Simulator</a></li>
-        <li><a href="#cases">Test Cases & Radar</a></li>
-        <li><a href="#roadmap">Project Roadmap</a></li>
-        <li><a href="#team-guide" style="color:var(--accent-green); font-weight:700;">👥 Team Guide</a></li>
-      </ul>
-      <div class="header-actions">
-        <button class="btn-ctrl active" id="btn-toggle-grid" title="Toggle cyber network grid background">✨ Grid: ON</button>
-        <button class="btn-ctrl" id="btn-toggle-audio" title="Toggle cyber synthesizer sound effects">🔇 Audio: OFF</button>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#live-stream" class="nav-highlight">🔴 Live SOC</a></li>
+          <li><a href="#simulator">Simulator</a></li>
+          <li><a href="#cases">Radar & Tests</a></li>
+          <li><a href="#roadmap">Roadmap</a></li>
+          <li><a href="#team-guide" class="nav-team">👥 Team Guide</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <div class="header-actions">
+          <button class="btn-ctrl active" id="btn-toggle-grid" title="Toggle cyber network grid background">✨ Grid: ON</button>
+          <button class="btn-ctrl" id="btn-toggle-audio" title="Toggle cyber synthesizer sound effects">🔇 Audio: OFF</button>
+        </div>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
   </header>
