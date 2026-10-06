@@ -347,10 +347,7 @@
       if (window.playCyberAudio) window.playCyberAudio('alert');
 
       animateSlidersTo(presets.attack, 2200, () => {
-        // Trigger live attack feed wave if SOC terminal exists
-        if (window.injectSocAttack) window.injectSocAttack('syn_flood');
-
-        // 3. Hold attack for 2.5 seconds, then AI automatically activates mitigation!
+        // Hold attack for 2.5 seconds, then AI automatically activates mitigation!
         setTimeout(() => {
           if (!isSimRunning) return;
 

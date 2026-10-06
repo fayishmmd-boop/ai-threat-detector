@@ -831,9 +831,8 @@
         <ul class="nav-links">
           <li><a href="#how-it-works">How It Works</a></li>
           <li><a href="#features">Features</a></li>
-          <li><a href="#live-stream" class="nav-highlight">🔴 Live SOC</a></li>
           <li><a href="#simulator">Simulator</a></li>
-          <li><a href="#cases">Radar & Tests</a></li>
+          <li><a href="#cases">Test Cases</a></li>
           <li><a href="#roadmap">Roadmap</a></li>
           <li><a href="#team-guide" class="nav-team">👥 Team Guide</a></li>
         </ul>
@@ -972,87 +971,6 @@
     </div>
   </section>
 
-  <!-- Live SOC Packet Telemetry Stream -->
-  <section id="live-stream">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag" style="color:var(--accent-cyan);">Real-Time SOC Monitoring</div>
-        <h2 class="section-title">Live Network Packet Telemetry Feed</h2>
-        <p style="color:var(--text-muted); margin-top:8px;">
-          Watch Scapy packets stream through the AI classifier in real-time. Click any packet row to inspect raw packet headers and the extracted 8-feature vector!
-        </p>
-      </div>
-
-      <div class="soc-terminal-container">
-        <!-- Header -->
-        <div class="soc-terminal-header">
-          <div class="soc-terminal-title">
-            <span class="pulse-dot"></span>
-            <strong style="font-family:'Outfit'; font-size:1.15rem; color:#fff;">SOC TELEMETRY STREAM — INTERFACE eth0</strong>
-            <span class="brand-badge" style="font-size:0.7rem;">Scapy Engine Active</span>
-          </div>
-          <div class="soc-stats-bar">
-            <div class="stat-metric"><span>Total:</span> <strong id="cnt-total" style="color:#fff">0</strong></div>
-            <div class="stat-metric"><span>Safe:</span> <strong id="cnt-normal" style="color:#34d399">0</strong></div>
-            <div class="stat-metric"><span>Threats Blocked:</span> <strong id="cnt-threats" style="color:#f87171">0</strong></div>
-            <div class="stat-metric"><span>Rate:</span> <strong id="cnt-pps" style="color:#38bdf8">18</strong> <span>pkt/s</span></div>
-          </div>
-        </div>
-
-        <!-- Controls Toolbar -->
-        <div class="soc-controls-bar">
-          <div class="filter-group">
-            <span style="font-size:0.75rem; color:var(--text-muted); font-family:'JetBrains Mono', monospace;">Filter:</span>
-            <button class="soc-filter-btn active" data-filter="all">All Traffic</button>
-            <button class="soc-filter-btn" data-filter="threats">🚨 Threats Only</button>
-            <button class="soc-filter-btn" data-filter="tcp">TCP</button>
-            <button class="soc-filter-btn" data-filter="udp">UDP / DNS</button>
-          </div>
-          <div class="action-group">
-            <span style="font-size:0.75rem; color:var(--text-muted); font-family:'JetBrains Mono', monospace;">Speed:</span>
-            <button class="soc-speed-btn active" data-speed="1">1x</button>
-            <button class="soc-speed-btn" data-speed="2">2x</button>
-            <button class="soc-speed-btn" data-speed="4">4x</button>
-            <button class="btn btn-ctrl" id="btn-soc-pause" style="padding:4px 10px; font-size:0.75rem;">⏸️ Pause</button>
-            <button class="btn btn-red" id="btn-soc-attack-syn" style="padding:5px 12px; font-size:0.75rem;">🚨 Inject SYN Flood</button>
-            <button class="btn btn-ctrl" id="btn-soc-attack-scan" style="padding:5px 12px; font-size:0.75rem; border-color:#f59e0b; color:#fbbf24;">🔍 Inject Port Scan</button>
-            <button class="btn btn-ctrl" id="btn-soc-clear" style="padding:4px 10px; font-size:0.75rem;">🗑️ Clear</button>
-          </div>
-        </div>
-
-        <!-- Packet Scroll Window -->
-        <div class="soc-stream-wrapper" id="soc-terminal-scroll">
-          <table class="soc-packet-table">
-            <thead>
-              <tr>
-                <th style="width:110px;">Timestamp</th>
-                <th style="width:70px;">Protocol</th>
-                <th>Source Address</th>
-                <th style="width:20px;"></th>
-                <th>Destination Address</th>
-                <th style="width:70px;">Length</th>
-                <th>Packet Summary / Flags</th>
-                <th style="width:130px;">AI Classifier Verdict</th>
-              </tr>
-            </thead>
-            <tbody id="soc-packet-body">
-              <!-- Dynamically populated via soc-terminal.js -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Packet Inspector Modal Dialog -->
-  <div class="packet-modal" id="packet-modal">
-    <div class="packet-modal-backdrop" id="packet-modal-backdrop"></div>
-    <div class="packet-modal-content">
-      <button class="packet-modal-close" id="packet-modal-close">✕</button>
-      <div id="packet-modal-body"></div>
-    </div>
-  </div>
-
   <!-- Interactive Live AI Simulator -->
   <section id="simulator">
     <div class="container">
@@ -1189,49 +1107,11 @@
       </div>
 
       <!-- Threat Radar HUD Image -->
-      <div class="hero-media-card" style="margin-bottom: 30px;">
+      <div class="hero-media-card" style="margin-bottom: 40px;">
         <img src="assets/threat_radar_ui.jpg" alt="Threat Radar Telemetry HUD">
         <div class="hero-media-overlay">
           <h3>Real-Time Network Telemetry Analysis</h3>
           <p>Radar scan tracks port reconnaissance, packet speed, and anomalies across all network nodes</p>
-        </div>
-      </div>
-
-      <!-- Interactive Cyber Radar HUD -->
-      <div class="radar-hud-card" style="margin-bottom: 40px;">
-        <div class="radar-hud-layout">
-          <div class="radar-canvas-container">
-            <canvas id="radar-canvas"></canvas>
-          </div>
-          <div class="radar-controls-panel">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-              <h3 style="font-family:'Outfit'; font-size:1.35rem; color:#fff;">📡 Live Cyber Radar & Threat Sonar</h3>
-              <span class="brand-badge" style="background:#06b6d4;">360° Sweep Active</span>
-            </div>
-            <p style="color:var(--text-muted); font-size:0.9rem;">
-              Rotating phased-array sonar tracking live IP endpoints. Hover or click blips on the radar scope to lock onto target telemetry and verify AI anomaly detection.
-            </p>
-
-            <div class="radar-filter-bar">
-              <span style="font-size:0.8rem; color:var(--text-muted); display:flex; align-items:center;">Filter View:</span>
-              <button class="radar-filter-btn active" data-filter="all">🌐 All Nodes</button>
-              <button class="radar-filter-btn" data-filter="threats">🚨 Threats Only</button>
-              <button class="radar-filter-btn" data-filter="clean">✅ Clean Only</button>
-            </div>
-
-            <div class="radar-target-list">
-              <div style="font-size:0.82rem; color:var(--accent-cyan); font-weight:700; margin-bottom:8px; text-transform:uppercase;">
-                🎯 Monitored Subnet Targets:
-              </div>
-              <ul style="list-style:none; font-size:0.82rem; font-family:'JetBrains Mono', monospace; color:var(--text-muted); display:flex; flex-direction:column; gap:6px;">
-                <li>🟢 <strong>192.168.1.105</strong> — Dev-Workstation (Safe, 2.4% risk)</li>
-                <li>🟢 <strong>192.168.1.1</strong> — Gateway Router (Safe, 1.1% risk)</li>
-                <li>🟡 <strong>172.16.4.88</strong> — IoT Camera (Beaconing, 42.0% risk)</li>
-                <li>🔴 <strong>45.33.32.156</strong> — External Botnet (SYN Flood, 99.4% risk)</li>
-                <li>🔴 <strong>185.220.101.5</strong> — Tor Exit (Port Scan, 96.2% risk)</li>
-              </ul>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -1554,8 +1434,6 @@
 
   <!-- Modern Modular Cyber Scripts -->
   <script src="js/cyber-matrix.js"></script>
-  <script src="js/radar-hud.js"></script>
-  <script src="js/soc-terminal.js"></script>
   <script src="js/simulator.js"></script>
   <script src="js/main.js"></script>
 </body>

@@ -8,10 +8,10 @@ This repository is built for GitHub Pages hosting, providing an interactive show
 ---
 
 ## 🌟 What's Included:
-* **🔴 Live SOC Packet Telemetry Feed:** Real-time streaming network packets with Scapy protocol decoding, packet inspector modal, protocol filters (`TCP`, `UDP`, `DNS`, `Threats`), and live attack injection.
-* **📡 Interactive Cyber Radar HUD Canvas:** Phased-array 360° rotating radar sweep that detects network nodes, locks onto threat blips, and displays target metrics.
-* **✨ Dynamic Neural Mesh Canvas Background:** Interactive particle constellation network with cursor deflection and glowing data packet pulses.
-* **🕹️ Advanced AI Threat Simulator:** Real-time 8-feature parameter sliders, live feature impact breakdown, 6 attack presets (`SYN Flood`, `Port Scan`, `Data Exfil`, `Slowloris`), and an automated **8-Second Live Attack & Defense Simulation** sequence.
+* **🕹️ Advanced AI Threat Simulator:** Real-time 8-feature parameter sliders, live feature impact breakdown, 6 attack presets (`Normal`, `Multi-Vector`, `SYN Flood`, `Port Scan`, `Data Exfil`, `Slowloris`), and an automated **8-Second Live Attack & Defense Simulation** sequence.
+* **📱 100% Smartphone Optimized:** Touch-friendly slider controls, responsive 2-column preset grid, mobile navigation drawer, and smooth swipe tables.
+* **✨ Dynamic Neural Mesh Canvas Background:** Interactive particle constellation network with gentle cursor physics and glowing data packet pulses.
+* **📊 Visual Cyber Telemetry & Radar:** High-resolution digital illustrations of the AI defense shield and network radar telemetry.
 * **🔊 Cyber Web Audio Synthesizer:** Zero-dependency sound effects for clicks, preset loads, and security intrusion klaxons (with instant mute/unmute control).
 * **📋 Roadmap 1-Click Code Copy:** Instant clipboard copy on all terminal commands with animated feedback.
 * **🔘 Circular Scroll Progress Ring:** Floating scroll-to-top button tracking exact page read progress.
